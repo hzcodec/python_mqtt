@@ -4,7 +4,7 @@
 #   Date        : 2018-11-29
 #   File        : multiprocess1.py
 #   Reference   : -
-#   Description : -
+#   Description : Shall be used with pub.py 
 #   Python ver  : 2.7.3 (gcc 4.6.3)
 
 import paho.mqtt.client as mqtt
