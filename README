@@ -8,5 +8,5 @@ mosquitto_sub -h test.mosquitto.org -t "CoreElectronics/test"
 mosquitto_sub -h test.mosquitto.org -t "CoreElectronics/topic"
 
 
-mosquitto_pub -h test.mosquitto.org -t CoreElectronics/test -m "Hello"
-mosquitto_pub -h test.mosquitto.org -t CoreElectronics/topic -m "World!"
+mosquitto_pub -d -h test.mosquitto.org -t CoreElectronics/test -m "Hello"
+mosquitto_pub -d -h test.mosquitto.org -t CoreElectronics/topic -m "World!"
