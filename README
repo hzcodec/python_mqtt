@@ -2,3 +2,7 @@ mosquitto_sub -h test.mosquitto.org -t "hello/world"
 
 python sub.py
 python pub.py
+
+
+mosquitto_sub -h test.mosquitto.org -t "CoreElectronics/test"
+mosquitto_sub -h test.mosquitto.org -t "CoreElectronics/topic"
