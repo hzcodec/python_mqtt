@@ -25,9 +25,10 @@ def on_disconnect(client, userdata, flags, rc=0):
 def on_message(client, userdata, msg):
 	topic = msg.topic
 	m_decode = str(msg.payload.decode("utf-8", "ignore"))
-	print("Received message:", m_decode)
 	print("Topic:", msg.topic)
-	print("--", msg.payload)
+	print("Message:", msg.payload)
+	print("QoS:", msg.qos)
+	print("Retatin flag:", msg.retain)
 
 #broker = "localhost"
 broker = "test.mosquitto.org"
@@ -42,8 +43,13 @@ client.on_message = on_message
 print("Connecting to broker:", broker)
 
 client.connect(broker)
+
+# (topic, qos=0)
 client.subscribe("house/sensor1")
+
 client.loop_start()
+
+# (topic, payload=None, qos=0, retain=False)
 client.publish("house/sensor1", "My first message")
 
 time.sleep(4)
