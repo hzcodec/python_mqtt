@@ -23,8 +23,6 @@ def on_disconnect(client, userdata, flags, rc=0):
 	print("Disconnected: "+str(rc))
 
 def on_message(client, userdata, msg):
-	topic = msg.topic
-	m_decode = str(msg.payload.decode("utf-8", "ignore"))
 	print("Topic:", msg.topic)
 	print("Message:", msg.payload)
 	print("QoS:", msg.qos)
