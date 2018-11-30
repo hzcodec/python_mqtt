@@ -32,7 +32,6 @@ def on_message(client, userdata, msg):
         print("Received message #1, do something")
         # Do something
 
-
     if msg.payload == "World!":
         print("Received message #2, do something else")
         # Do something else
@@ -51,6 +50,6 @@ client.connect("test.mosquitto.org", 1883, 60)
 #client.loop_forever()
 
 client.loop_start()
-time.sleep(8)
+time.sleep(12)
 client.loop_stop()
 client.disconnect()
