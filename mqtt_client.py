@@ -13,6 +13,7 @@
 
  
 import paho.mqtt.client as mqtt
+import time
  
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -47,4 +48,9 @@ client.connect("test.mosquitto.org", 1883, 60)
 # reconnecting. Check the documentation at
 # https://github.com/eclipse/paho.mqtt.python
 # for information on how to use other loop*() functions
-client.loop_forever()
+#client.loop_forever()
+
+client.loop_start()
+time.sleep(8)
+client.loop_stop()
+client.disconnect()
