@@ -8,6 +8,12 @@
 #                  
 #                 1) Launch mqtt_client in a terminal
 #                 2) Launch mqtt_publish in a second terminal
+
+#                    mosquitto_sub -h test.mosquitto.org -t "CoreElectronics/test"
+#                    mosquitto_sub -h test.mosquitto.org -t "CoreElectronics/topic"
+#                     
+#                    mosquitto_pub -d -h test.mosquitto.org -t CoreElectronics/test -m "Hello"
+#                    mosquitto_pub -d -h test.mosquitto.org -t CoreElectronics/topic -m "World!"
 #
 #   Python ver  : 2.7.3 (gcc 4.6.3)
 
