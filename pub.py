@@ -2,7 +2,7 @@
 
 #   Auther      : Heinz Samuelsson
 #   Date        : 2018-11-29
-#   File        : multiprocess1.py
+#   File        : pub.py
 #   Reference   : -
 #   Description : Shall be used with sub.py 
 #   Python ver  : 2.7.3 (gcc 4.6.3)
