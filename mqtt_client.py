@@ -20,16 +20,21 @@
  
 import paho.mqtt.client as mqtt
 import time
+import sys
  
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
- 
-    # Subscribing in on_connect() - if we lose the connection and
-    # reconnect then subscriptions will be renewed.
-    client.subscribe("CoreElectronics/test")
-    client.subscribe("CoreElectronics/topic")
- 
+	
+	# Subscribing in on_connect() - if we lose the connection and
+	# reconnect then subscriptions will be renewed.
+
+	if rc == 0:
+		client.subscribe("CoreElectronics/test")
+		client.subscribe("CoreElectronics/topic")
+		print("Connected with result code "+str(rc))
+	else:
+		print("No connection")
+
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
 	print("Topic: "+msg.topic+" "+str(msg.payload))
