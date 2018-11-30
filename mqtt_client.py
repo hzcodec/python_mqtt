@@ -32,15 +32,17 @@ def on_connect(client, userdata, flags, rc):
  
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
+    print("Topic: "+msg.topic+" "+str(msg.payload))
 
     if msg.payload == "Hello":
-        print("Received message #1, do something")
+        print("Received message #1")
         # Do something
 
     if msg.payload == "World!":
-        print("Received message #2, do something else")
+        print("Received message #2")
         # Do something else
+
+    print(50*'-')
  
 # Create an MQTT client and attach our routines to it.
 client = mqtt.Client()
