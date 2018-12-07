@@ -59,6 +59,9 @@ client.on_message = on_message
 client.on_disconnect = on_disconnect
  
 client.connect("test.mosquitto.org", 1883, 60)
+
+# http://www.hivemq.com/demos/websocket-client/
+#client.connect("broker.mqttdashboard.com", 8000, 60)
  
 # Process network traffic and dispatch callbacks. This will also handle
 # reconnecting. Check the documentation at

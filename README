@@ -15,5 +15,5 @@ mosquitto_sub -h test.mosquitto.org -t "topic_2"
 mosquitto_pub -d -h test.mosquitto.org -t topic_1 -m "Hello"
 mosquitto_pub -d -h test.mosquitto.org -t topic_2 -m "World!"
 
-mosquitto_pub -d -h test.mosquitto.org -v -t topic_1 -m "World!" --id client-one
-mosquitto_pub -d -h test.mosquitto.org -v -t topic_2 -m "World!" --id client-one
+mosquitto_pub -d -h test.mosquitto.org -t topic_1 -m "Hello" --id client-one
+mosquitto_pub -d -h test.mosquitto.org -t topic_2 -m "World!" --id client-one
