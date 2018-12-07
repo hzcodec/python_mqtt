@@ -8,7 +8,7 @@
 
 import paho.mqtt.publish as publish
 
-publish.single("test", "Hello", hostname="test.mosquitto.org")
-publish.single("topic", "World!", hostname="test.mosquitto.org")
+publish.single("topic_1", "Hello", hostname="test.mosquitto.org")
+publish.single("topic_2", "World!", hostname="test.mosquitto.org")
 
 print("Done")

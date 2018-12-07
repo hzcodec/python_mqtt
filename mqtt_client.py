@@ -29,8 +29,8 @@ def on_connect(client, userdata, flags, rc):
 	# reconnect then subscriptions will be renewed.
 
 	if rc == 0:
-		client.subscribe("test")
-		client.subscribe("topic")
+		client.subscribe("topic_1")
+		client.subscribe("topic_2")
 		print("Connected with result code "+str(rc))
 	else:
 		print("No connection")
