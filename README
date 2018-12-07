@@ -9,8 +9,11 @@ python pub.py
 mqtt_client.py
 mqtt_publish.py
 
-mosquitto_sub -h test.mosquitto.org -t "CoreElectronics/test"
-mosquitto_sub -h test.mosquitto.org -t "CoreElectronics/topic"
+mosquitto_sub -h test.mosquitto.org -t "test"
+mosquitto_sub -h test.mosquitto.org -t "topic"
 
-mosquitto_pub -d -h test.mosquitto.org -t CoreElectronics/test -m "Hello"
-mosquitto_pub -d -h test.mosquitto.org -t CoreElectronics/topic -m "World!"
+mosquitto_pub -d -h test.mosquitto.org -t test -m "Hello"
+mosquitto_pub -d -h test.mosquitto.org -t topic -m "World!"
+
+mosquitto_pub -d -h test.mosquitto.org -v -t topic -m "World!" --id client-one
+mosquitto_pub -d -h test.mosquitto.org -v -t test -m "World!" --id client-one
