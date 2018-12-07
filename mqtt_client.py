@@ -47,9 +47,9 @@ client.connect("test.mosquitto.org", 1883, 60)
 # reconnecting. Check the documentation at
 # https://github.com/eclipse/paho.mqtt.python
 # for information on how to use other loop*() functions
-#client.loop_forever()
+client.loop_forever()
 
-client.loop_start()
-time.sleep(12)
-client.loop_stop()
-client.disconnect()
+#client.loop_start()
+#time.sleep(12)
+#client.loop_stop()
+#client.disconnect()
