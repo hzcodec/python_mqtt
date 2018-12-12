@@ -58,7 +58,8 @@ client.on_connect = on_connect
 client.on_message = on_message
 client.on_disconnect = on_disconnect
  
-client.connect("test.mosquitto.org", 1883, 60)
+#client.connect("test.mosquitto.org", 1883, 60)
+client.connect("localhost", 1883, 60)
 
 # http://www.hivemq.com/demos/websocket-client/
 #client.connect("broker.mqttdashboard.com", 8000, 60)
