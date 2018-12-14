@@ -22,15 +22,16 @@ import paho.mqtt.client as mqtt
 import time
 import sys
 
+URL = "test.mosquitto.ort"
+PORT = 1883
+KEEP_ALIVE = 60
+
 class MqttClient():
 	def __init__(self):
 		print("mqtt client object created\n")
 		self.client = mqtt.Client()
 		self.client.on_connect = self.on_connect
 		self.client.on_message = self.on_message
-
-	def connect_client(self):
-		self.client.connect("test.mosquitto.org", 1883, 60)
 
 	def on_connect(self, client, port, flag):
         	print("On connect")
@@ -43,7 +44,7 @@ class MqttClient():
 			print(50*'-')
 	
 	def run(self):
-		self.client.on_connect("test.mosquitto.org", 1883, 60)
+		self.client.on_connect(URL, PORT, KEEP_ALIVE)
 		self.client.subscribe("topic_1")
 		self.client.loop_forever()
 	
