@@ -32,8 +32,8 @@ class MqttClient():
 	def connect_client(self):
 		self.client.connect("test.mosquitto.org", 1883, 60)
 
-	def on_connect(self, rc):
-        	print("rc: "+str(rc))
+	def on_connect(self, client, port, flag):
+        	print("On connect")
 
 	def on_message(self, client, userdata, msg):
 		print("Topic: "+msg.topic+" "+str(msg.payload))
@@ -43,24 +43,14 @@ class MqttClient():
 			print(50*'-')
 	
 	def run(self):
-		self.client.connect("test.mosquitto.org", 1883, 60)
+		self.client.on_connect("test.mosquitto.org", 1883, 60)
 		self.client.subscribe("topic_1")
+		self.client.loop_forever()
 	
 
-def on_disconnect(client, userdata, flags, rc=0):
-	print("Connection disconnected")
+	def on_disconnect(self, client, userdata, flags, rc=0):
+		print("Connection disconnected")
  
-# Create an MQTT client and attach our routines to it.
-#client = mqtt.Client()
-#client.on_connect = on_connect
-#client.on_message = on_message
-#client.on_disconnect = on_disconnect
-# 
-##client.connect("test.mosquitto.org", 1883, 60)
-#client.connect("localhost", 1883, 60)
-
-# for information on how to use other loop*() functions
-#client.loop_forever()
 
 if __name__ == "__main__":
 	mqttClient = MqttClient()
