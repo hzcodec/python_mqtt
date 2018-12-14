@@ -48,7 +48,6 @@ class MqttClient():
 		self.client.subscribe("topic_1")
 		self.client.loop_forever()
 	
-
 	def on_disconnect(self, client, userdata, flags, rc=0):
 		print("Connection disconnected")
  
