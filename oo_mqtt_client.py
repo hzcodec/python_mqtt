@@ -4,53 +4,38 @@
 #   Reference   : -
 #   Description : MQTT Client demo
 #                  
-#                 1) Launch mqtt_client in a terminal
-#                 2) Launch mqtt_publish in a second terminal
+#                 1) Launch oo_mqtt_client in a terminal
+#                 2) mosquitto_pub -d -h 10.239.181.182 -t topic_2 -m "Hello"
 
-#                    mosquitto_sub -h test.mosquitto.org -t "CoreElectronics/test"
-#                    mosquitto_sub -h test.mosquitto.org -t "CoreElectronics/topic"
-#                     
-#                    mosquitto_pub -d -h test.mosquitto.org -t CoreElectronics/test -m "Hello"
-#                    mosquitto_pub -d -h test.mosquitto.org -t CoreElectronics/topic -m "World!"
-#
 #   Python ver  : 2.7.3 (gcc 4.6.3)
 
  
 import paho.mqtt.client as mqtt
-import time
-import sys
 
-URL = "test.mosquitto.org"
+#URL = "test.mosquitto.org"
+URL = "10.239.181.182"
 PORT = 1883
 KEEP_ALIVE = 60
 
-class MqttClient():
-	def __init__(self):
-		print("mqtt client object created\n")
-		self.client = mqtt.Client()
-		self.client.on_connect = self.on_connect
-		self.client.on_message = self.on_message
+class MqttClient:
 
-	def on_connect(self, client, port, flag):
-        	print("On connect")
-		self.client.subscribe("topic_1")
+    def __init__(self, master):
+        self.master = master
+        self.master.on_connect = self.on_connect
+        self.master.on_message = self.on_message
+        self.master.connect(URL, PORT, KEEP_ALIVE)
 
-	def on_message(self, client, userdata, msg):
-		print("Topic: "+msg.topic+" "+str(msg.payload))
-		
-		if msg.payload == "Hello":
-		    	print("Received message #1\n")
-			print(50*'-')
-	
-	def run(self):
-		self.client.on_connect(URL, PORT, KEEP_ALIVE)
-		self.client.loop_forever()
-	
-	def on_disconnect(self, client, userdata, flags, rc=0):
-		print("Connection disconnected")
- 
+    def on_connect(self, master, obj, flags, rc):
+        self.master.subscribe('topic_2')
+
+    def on_message(self, master, obj, msg):
+        print(str(msg.payload))
+
 
 if __name__ == "__main__":
-	mqttClient = MqttClient()
-	mqttClient.run()
+
+	client = mqtt.Client()
+	mqtt_client_obj = MqttClient(client)
+	client.loop_forever()
+
 

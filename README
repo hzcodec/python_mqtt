@@ -22,6 +22,11 @@ mosquitto_sub -h localhost -t "topic_1"
 
 -----------------------------------------------------------------------
 
+mosquitto_pub -d -h 10.239.181.182 -t topic_2 -m "World!"
+mosquitto_pub -d -h 10.239.181.182 -t topic_2 -m "Hello"
+
+-----------------------------------------------------------------------
+
 sudo service mosquitto status
 
 
