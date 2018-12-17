@@ -1,7 +1,7 @@
 #   Auther      : Heinz Samuelsson
 #   Date        : 2018-12-14
 #   File        : oo_mqtt_client.py
-#   Reference   : -
+#   Reference   : https://www.hivemq.com/blog/mqtt-client-library-paho-python/
 #   Description : MQTT Client demo
 #                  
 #                 1) Launch oo_mqtt_client in a terminal
@@ -16,6 +16,8 @@ import paho.mqtt.client as mqtt
 URL = "10.239.181.182"
 PORT = 1883
 KEEP_ALIVE = 60
+TOPIC = "topic_2"
+QoS_0 = 0
 
 class MqttClient:
 
@@ -26,7 +28,7 @@ class MqttClient:
         self.master.connect(URL, PORT, KEEP_ALIVE)
 
     def on_connect(self, master, obj, flags, rc):
-        self.master.subscribe('topic_2')
+        self.master.subscribe(TOPIC, qos=QoS_0)
 
     def on_message(self, master, obj, msg):
         print(str(msg.payload))
