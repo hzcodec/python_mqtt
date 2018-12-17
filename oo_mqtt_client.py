@@ -1,10 +1,8 @@
 #   Auther      : Heinz Samuelsson
-#   Date        : 2018-11-29
+#   Date        : 2018-12-14
 #   File        : oo_mqtt_client.py
 #   Reference   : -
 #   Description : MQTT Client demo
-#                 Continuously monitor two different MQTT topics for data,
-#                 check if the received data matches two predefined 'commands'
 #                  
 #                 1) Launch mqtt_client in a terminal
 #                 2) Launch mqtt_publish in a second terminal
@@ -22,7 +20,7 @@ import paho.mqtt.client as mqtt
 import time
 import sys
 
-URL = "test.mosquitto.ort"
+URL = "test.mosquitto.org"
 PORT = 1883
 KEEP_ALIVE = 60
 
@@ -35,6 +33,7 @@ class MqttClient():
 
 	def on_connect(self, client, port, flag):
         	print("On connect")
+		self.client.subscribe("topic_1")
 
 	def on_message(self, client, userdata, msg):
 		print("Topic: "+msg.topic+" "+str(msg.payload))
@@ -45,7 +44,6 @@ class MqttClient():
 	
 	def run(self):
 		self.client.on_connect(URL, PORT, KEEP_ALIVE)
-		self.client.subscribe("topic_1")
 		self.client.loop_forever()
 	
 	def on_disconnect(self, client, userdata, flags, rc=0):
