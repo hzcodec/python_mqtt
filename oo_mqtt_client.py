@@ -39,7 +39,7 @@ class MqttClient:
 	def on_message(self, master, obj, msg):
 		print(str(msg.payload))
 
-	def on_disconnect(client, userdata, flags, rc=0):
+	def on_disconnect(self):
 		print("Disconnected rc="+str(rc))
 
 
@@ -47,12 +47,13 @@ if __name__ == "__main__":
 
 	client = mqtt.Client()
 	mqtt_client_obj = MqttClient(client)
+	print("Client started\n")
 
 	try:
 		client.loop_forever()
 
 	except KeyboardInterrupt:
-		print("Connection closed")
+		print("\nConnection closed\n")
 		#mqtt_client_obj.on_disconnect()
 		sys.exit(0)
 
