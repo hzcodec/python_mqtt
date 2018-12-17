@@ -8,7 +8,8 @@
 
 import paho.mqtt.publish as publish
 
-HOST_URL = "10.239.181.182"
+#HOST_URL = "10.239.181.182"
+HOST_URL = "192.168.1.239"
 #publish.single("topic_1", "Hello", hostname="test.mosquitto.org")
 #publish.single("topic_2", "World!", hostname="test.mosquitto.org")
 publish.single("topic_2", "Hello", hostname=HOST_URL)
