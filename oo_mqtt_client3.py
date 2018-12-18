@@ -28,7 +28,9 @@ class MyMQTTClass(mqtt.Client):
         print(string)
 
     def on_disconnect(self):
-	print("Disconnected ...")
+	print("\n========================")
+	print("Disconnected from broker")
+	print("========================")
 
     def run(self):
         #self.connect("192.168.1.239", 1883, 60)
@@ -42,7 +44,6 @@ class MyMQTTClass(mqtt.Client):
         	return rc
 
 	except KeyboardInterrupt:
-		print("\nConnection closed\n")
 		self.on_disconnect()
 		sys.exit(0)
 
