@@ -16,7 +16,7 @@ class MyMQTTClass(mqtt.Client):
         print("rc: "+str(rc))
 
     def on_message(self, mqttc, obj, msg):
-        print(msg.topic+" "+str(msg.qos)+" "+str(msg.payload))
+        print("Topic:"+msg.topic+", QoS="+str(msg.qos)+", Payload:"+str(msg.payload))
 
     def on_publish(self, mqttc, obj, mid):
         print("mid: "+str(mid))
