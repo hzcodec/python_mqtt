@@ -3,6 +3,7 @@
 #   File        : oo_mqtt_client3.py
 #   Reference   : https://github.com/eclipse/paho.mqtt.python/blob/master/examples/client_sub-class.py 
 #   Description : MQTT Client demo
+#                   mosquitto_pub -d -h 10.239.181.182 -t topic_2 -m "Hello"
 #                  
 #   Python ver  : 2.7.3 (gcc 4.6.3)
 
@@ -30,7 +31,8 @@ class MyMQTTClass(mqtt.Client):
 	print("Disconnected ...")
 
     def run(self):
-        self.connect("192.168.1.239", 1883, 60)
+        #self.connect("192.168.1.239", 1883, 60)
+        self.connect("10.239.181.182", 1883, 60)
         self.subscribe("topic_2", 0)
 
         rc = 0
